@@ -46,18 +46,3 @@ services:
       - cars-service-network
     depends_on:
       - backend
-
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    networks:
-      - cars-service-network
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /etc/nginx/sites-available/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - /etc/nginx/html:/etc/nginx/html:ro
-      - /etc/letsencrypt:/etc/letsencrypt:ro
-    depends_on:
-      - frontend
