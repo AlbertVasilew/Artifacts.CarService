@@ -1,0 +1,46 @@
+version: "3.9"
+
+networks:
+  dev-cars-service-network:
+    driver: bridge
+
+volumes:
+  dev-db-data:
+
+services:
+  db:
+    image: postgres:16
+    container_name: dev-db
+    networks:
+      - dev-cars-service-network
+    environment:
+      POSTGRES_DB: cars-service
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: p@ssw0rd
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5433"
+
+  backend:
+    build:
+      context: /root/repos/dev/Backend.CarService
+    image: dev-backend
+    container_name: dev-backend
+    networks:
+      - dev-cars-service-network
+    environment:
+      ASPNETCORE_ENVIRONMENT: Dev
+      ASPNETCORE_URLS: http://+:5000
+    depends_on:
+      - dev-db
+
+  frontend:
+    build:
+      context: /root/repos/dev/cars-service-ui
+    image: dev-frontend
+    container_name: dev-frontend
+    networks:
+      - dev-cars-service-network
+    depends_on:
+      - dev-backend
