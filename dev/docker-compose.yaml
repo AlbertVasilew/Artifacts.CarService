@@ -5,7 +5,7 @@ networks:
     driver: bridge
 
 volumes:
-  dev-db-data:
+  db-data:
 
 services:
   dev-db:
@@ -18,7 +18,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: p@ssw0rd
     volumes:
-      - dev-db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     ports:
       - "127.0.0.1:5433:5432"
 
