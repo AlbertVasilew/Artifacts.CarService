@@ -24,7 +24,7 @@ services:
 
   backend:
     build:
-      context: /root/dev/repos/Backend.CarService
+      context: /root/dev/Backend.CarService
     image: dev-backend
     container_name: dev-backend
     networks:
@@ -37,7 +37,7 @@ services:
 
   frontend:
     build:
-      context: /root/dev/repos/cars-service-ui
+      context: /root/dev/cars-service-ui
     image: dev-frontend
     container_name: dev-frontend
     networks:
