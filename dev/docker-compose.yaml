@@ -8,7 +8,7 @@ volumes:
   dev-db-data:
 
 services:
-  db:
+  dev-db:
     image: postgres:16
     container_name: dev-db
     networks:
@@ -22,7 +22,7 @@ services:
     ports:
       - "127.0.0.1:5432:5433"
 
-  backend:
+  dev-backend:
     build:
       context: /root/dev/Backend.CarService
     image: dev-backend
@@ -35,7 +35,7 @@ services:
     depends_on:
       - dev-db
 
-  frontend:
+  dev-frontend:
     build:
       context: /root/dev/cars-service-ui
     image: dev-frontend
