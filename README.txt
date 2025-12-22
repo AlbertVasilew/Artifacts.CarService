@@ -1,4 +1,4 @@
-<h1>Deployment Steps</h1>
+Deployment Steps
 
 1. Move default.conf to /etc/nginx/sites-available/default.conf
 2. Clone backend and front end repos
