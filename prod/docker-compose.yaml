@@ -38,6 +38,8 @@ services:
   frontend:
     build:
       context: /root/prod/cars-service-ui
+      args:
+        VITE_MODE: production
     image: frontend
     container_name: frontend
     networks:

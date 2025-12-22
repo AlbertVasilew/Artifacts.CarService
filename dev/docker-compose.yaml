@@ -38,6 +38,8 @@ services:
   dev-frontend:
     build:
       context: /root/dev/cars-service-ui
+      args:
+        VITE_MODE: dev
     image: dev-frontend
     container_name: dev-frontend
     networks:
